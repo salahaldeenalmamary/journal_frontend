@@ -1,0 +1,51 @@
+{
+  "name": "react-bootstrap-4-inbox",
+  "version": "1.0.0",
+  "description": "A simple ReactJs Inbox app that uses Bootstrap 4 and FontAwesome icons. Reads messages.json data, and displays in a list. Messages can be marked as read, and there's a modal to view or compose messages.",
+  "keywords": [
+    "inbox",
+    "react",
+    "reactjs",
+    "bootstrap",
+    "messages"
+  ],
+  "main": "src/index.js",
+  "dependencies": {
+    "bootstrap": "^4.6.2",
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
+    "html2pdf": "^0.0.11",
+    "html2pdf.js": "^0.10.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.9.2",
+    "react-dom": "^18.2.0",
+    "react-draft-wysiwyg": "^1.15.0",
+    "react-form-stepper": "^2.0.3",
+    "react-icons": "^4.12.0",
+    "react-multistep": "^5.5.9",
+    "react-router-dom": "^6.21.1",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.8.0",
+    "react-step-wizard": "^5.3.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

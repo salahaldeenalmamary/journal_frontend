@@ -1,0 +1,7 @@
+/* Add this to your CSS file, e.g., PaginationComponent.css */
+.pagination-container {
+    position: relative;
+    z-index: 1; /* Adjust the z-index as needed, make it higher than the z-index of the footer */
+    /* You can also add additional styling as needed */
+  }
+  
