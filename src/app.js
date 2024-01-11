@@ -11,6 +11,7 @@ import HomePage from "./pages/home/HomePage";
 import ReviewerManagerMain from "./pages/SelectReviewer/MainselectedReviewer";
 import MainSubmainDetails from "./pages/EditorDetailsSubmission/MainSubmainDetails";
 import SearchReviewerMain from "./pages/SearchReviewer/Mian";
+import MainSubmmsionEditor from "./pages/Submission/MainSubmmsionEditor";
 function App() {
   return (
     <Router>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/reviewerManagerMain" element={<ReviewerManagerMain />} />
         <Route path="/mainSubmainDetails" element={<MainSubmainDetails />} />
         <Route path="/searchReviewerMain" element={<SearchReviewerMain />} />
+        <Route path="/mainSubmmsionEditor" element={<MainSubmmsionEditor />} />
         <Route
           path="/AuthorSubmissionForm"
           element={<AuthorSubmissionForm />}

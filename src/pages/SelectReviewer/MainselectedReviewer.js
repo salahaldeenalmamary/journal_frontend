@@ -4,6 +4,8 @@ import ReviewerManager from './selectedList';
 import EmailFormSend from './EmailFormSend';
 import CustomLayout from '../SearchReviewer/layout';
 import CustomSidebar from './CustomSidebar';
+import YourParentComponent from './SearchSelected';
+import SearchReviewerTable from './SelectTable';
 
 
 
@@ -20,10 +22,10 @@ const ReviewerManagerMain = () => {
 <ReviewerManager/>
         <br/>
         <br/>
-   
+  
    <ProposedReviewer></ProposedReviewer>
   <EmailFormSend></EmailFormSend>
-
+<SearchReviewerTable></SearchReviewerTable>
 </CustomLayout>
        
    

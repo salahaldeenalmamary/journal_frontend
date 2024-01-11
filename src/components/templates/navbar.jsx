@@ -33,6 +33,9 @@ const NavigationBar = () => {
               Submission
             </Nav.Link>
             
+            <Nav.Link className="text-white" href="/mainSubmmsionEditor">
+            mainSubmmsionEditor
+            </Nav.Link>
             <Nav.Link className="text-white" href="/Admin">
               Admin
             </Nav.Link>

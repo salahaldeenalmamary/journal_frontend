@@ -2,20 +2,27 @@
 import TableHeader from "./tableHeader";
 import TableBody from "./tableBody";
 import { useState } from "react";
+import { Table } from "react-bootstrap";
 
-const Table = ({ columns, sortColumn, onSort, data }) => {
+const Tables = ({ columns, sortColumn, onSort, data ,rowActions, checkboxActions}) => {
   const [localColumns, setLocalColumns] = useState(columns);
+ 
+
   // console.log(localColumns);
   return (
-    <table className="table">
+    <Table striped bordered hover responsive>
+ 
       <TableHeader
         columns={localColumns}
         sortColumn={sortColumn}
         onSort={onSort}
+        rowActions={rowActions}
       />
-      <TableBody data={data} columns={localColumns} />
-    </table>
+      <TableBody data={data} columns={localColumns}
+       checkboxActions={checkboxActions}
+      rowActions={rowActions}/>
+    </Table>
   );
 };
 
-export default Table;
+export default Tables;

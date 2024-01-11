@@ -1,5 +1,5 @@
 import React from "react";
-const TableHeader = ({ columns, sortColumn: localsortcolumn, onSort }) => {
+const TableHeader = ({ columns, sortColumn: localsortcolumn, onSort ,rowActions }) => {
   const raiseSort = (path) => {
     const sortColumn = { ...localsortcolumn };
     if (path === undefined) return null;
@@ -26,6 +26,7 @@ const TableHeader = ({ columns, sortColumn: localsortcolumn, onSort }) => {
   return (
     <thead>
       <tr>
+      {rowActions && <th className="text-center">Actions</th>}
         {columns.map((column) => (
           <th
             className="clickable text-center"

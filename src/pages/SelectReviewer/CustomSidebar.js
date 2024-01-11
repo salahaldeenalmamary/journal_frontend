@@ -41,7 +41,7 @@ const CustomSidebar = () => {
   ];
   return (
     <div>
-      {/* Your other components */}
+      
       <Sidebar menuItems={mainMenuItems} />
     </div>
   );
