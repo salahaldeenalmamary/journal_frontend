@@ -15,7 +15,7 @@ const ExampleComponent = () => {
   }, [dispatch]);
 
   const handleCreateCategory = (categoryData) => {
-    // Dispatch the createCategory action
+   
     dispatch(createCategory(categoryData));
   };
 console.log(categories);

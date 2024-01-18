@@ -4,16 +4,19 @@ import Tables from "../../common/table_with_header_and_body/table";
 
 const SubmmisonTable = () => {
   const data = [
-    // Your data array
-    { articale_tital: '', articale_type: "", assignedEditors: '', sectionCategory: '' },
-
-
+    {
+      article_title: '',
+      article_type: '',
+      assigned_editors: '',
+      section_category: '',
+    
+    },
   ];
+  
 
   const columns = [
     { path: "articale_tital", label: "Articale Titel" },
     { path: "articale_type", label: "Articale Type" },
-
     { path: "assignedEditors", label: "Assigned Editors" },
     { path: "sectionCategory", label: "Section Category" },
     { path: "doi", label: "DOI" },
@@ -37,10 +40,7 @@ const SubmmisonTable = () => {
 
   const rowActions = [
     {
-      to: (item) => {
-
-        console.log("Delete clicked for item:", item);
-      },
+      to: (item) => '/mainSubmainDetails',
       label: " View Submission",
       onClick: (item) => {
 
@@ -153,6 +153,7 @@ const SubmmisonTable = () => {
     },
     {
       label: "Send E-mail",
+      to: (item) =>'/emailFormSend',
       onClick: (item) => {
         // Handle action
         console.log("Send E-mail clicked for item:", item);

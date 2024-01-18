@@ -38,8 +38,30 @@ const TableBody = ({ data, columns, rowActions , checkboxActions}) => {
     if (column.content) {
       return column.content(item);
     }
-    return _.get(item, column.path);
+  
+    const cellValue = _.get(item, column.path);
+  
+    if (_.isObject(cellValue)) {
+      // If the cell value is an object, map through key-value pairs
+      return Object.entries(cellValue).map(([key, value]) => (
+        <div key={key}>
+          <strong>{capitalizeWords(key)}: </strong>
+          {value}
+        </div>
+      ));
+    }
+  
+    return cellValue;
   };
+  
+  // Helper function to capitalize the first character of each word
+  const capitalizeWords = (str) => {
+    return str
+      .split(/[_\s]+/) // Split by space or underscore
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+  
 
   const createKey = (item, column) => {
     return item.id + (column.path || column.key);
@@ -48,6 +70,7 @@ const TableBody = ({ data, columns, rowActions , checkboxActions}) => {
     console.log("Selected action:", selectedAction);
    
   };
+  
   return (
     <tbody>
       {data &&

@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Button, Form, Row, Col, Container } from 'react-bootstrap';
 
-const SearchReviewersTabOne = () => {
+const SearchReviewersTabOne = ({ attributes }) => {
   const [searchCriteria, setSearchCriteria] = useState([{ attribute: '', condition: '', selector: '', value: '', combineOperator: 'AND' }]);
+
+  useEffect(() => {
+    // Ensure attributes is an array before setting it as the default attribute for the first row
+    if (Array.isArray(attributes) && attributes.length > 0) {
+      setSearchCriteria((prevCriteria) => [
+        {
+          ...prevCriteria[0],
+          attribute: attributes[0], // Set the default attribute from the props
+        },
+      ]);
+    }
+  }, [attributes]);
 
   const handleAddRow = () => {
     setSearchCriteria((prevCriteria) => [...prevCriteria, { attribute: '', condition: '', selector: '', value: '', combineOperator: 'AND' }]);
@@ -19,17 +31,21 @@ const SearchReviewersTabOne = () => {
       return updatedCriteria;
     });
   };
-
   const handleApplySearch = () => {
-  
     console.log('Applying search:', searchCriteria);
-  
+  };
+
+  const headerStyle = {
+    backgroundColor: "#255384",
+    color: "#fff",
+    padding: "15px",
+    marginBottom: "2px",
   };
 
   return (
     <Container>
       <Table striped bordered hover>
-        <thead>
+        <thead style={headerStyle}>
           <tr>
             <th>Attribute</th>
             <th>Is/Is Not</th>
@@ -44,10 +60,11 @@ const SearchReviewersTabOne = () => {
             <tr key={index}>
               <td>
                 <Form.Control as="select" value={criteria.attribute} onChange={(e) => handleChange(index, 'attribute', e.target.value)}>
-                
-                  <option value="name">Name</option>
-                  <option value="email">Email</option>
-                  
+                  {attributes.map((attribute) => (
+                    <option key={attribute} value={attribute}>
+                      {attribute}
+                    </option>
+                  ))}
                 </Form.Control>
               </td>
               <td>

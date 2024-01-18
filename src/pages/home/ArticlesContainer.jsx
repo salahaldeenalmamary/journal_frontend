@@ -15,9 +15,6 @@ const ArticlesContainer = ({ articles: books }) => {
       }
     });
   };
-  //
-
-  //   const { currentPage, totalPages, filteredBooks, messages } = this.state;
 
   return (
     <ListGroup>
@@ -28,6 +25,11 @@ const ArticlesContainer = ({ articles: books }) => {
             className={`d-flex justify-content-between align-items-center ${
               selectedBooks.includes(book.id) ? "bg-primary text-white" : ""
             }`}
+            style={{
+              padding: "20px",
+              marginBottom: "15px",
+              borderRadius: "10px",
+            }}
           >
             <Row>
               <Col xs={3}>
@@ -35,16 +37,19 @@ const ArticlesContainer = ({ articles: books }) => {
                   src={book.cover_image}
                   alt={book.title}
                   className="img-fluid"
+                  style={{ maxWidth: "100%", borderRadius: "5px" }}
                 />
               </Col>
               <Col xs={9}>
-                <h5>{book.title}</h5>
-                <p className="mb-1">{book.author}</p>
-                <p className="mb-1">{book.description}</p>
-                <p className="mb-1">
+                <h5 style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
+                  {book.title}
+                </h5>
+                <p className="mb-2">{book.author}</p>
+                <p className="mb-2">{book.description}</p>
+                <p className="mb-2">
                   <strong>Genre:</strong> {book.genre.join(", ")}
                 </p>
-                <p className="mb-1">
+                <p className="mb-2">
                   <strong>Publication Year:</strong> {book.publication_year}
                 </p>
               </Col>
@@ -68,6 +73,12 @@ const ArticlesContainer = ({ articles: books }) => {
                     selectedBooks.includes(book.id) ? "text-white" : ""
                   }`}
                   onClick={() => handleBookSelect(book.id)}
+                  style={{
+                    fontSize: "1rem",
+                    fontWeight: "bold",
+                    padding: "5px 10px",
+                    marginRight: "10px",
+                  }}
                 >
                   <BsCheckSquare /> Select
                 </Button>

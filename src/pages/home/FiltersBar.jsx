@@ -11,19 +11,27 @@ export const FiltersBar = () => {
 
   return (
     <div>
-      <Card>
-        <h6>App Categories</h6>
-        <ListGroup variant="flush" className="small">
-          {Array.from(Array(10).keys()).map((index) => (
-            <ListGroup.Item
-              key={index}
-              onClick={() => handleItemClick(index)}
-              style={{ backgroundColor: selectedItem === index ? "blue" : "" }}
-            >
-              Categories {index + 1}
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
+      <Card style={{ width: "300px", marginTop: "20px" }}>
+        <Card.Body>
+          <Card.Title style={{ fontSize: "1.5rem", marginBottom: "15px" }}>
+            App Categories
+          </Card.Title>
+          <ListGroup variant="flush" className="small">
+            {Array.from(Array(10).keys()).map((index) => (
+              <ListGroup.Item
+                key={index}
+                onClick={() => handleItemClick(index)}
+                style={{
+                  backgroundColor: selectedItem === index ? "#007BFF" : "",
+                  color: selectedItem === index ? "#fff" : "#000",
+                  cursor: "pointer",
+                }}
+              >
+                Categories {index + 1}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </Card.Body>
       </Card>
     </div>
   );

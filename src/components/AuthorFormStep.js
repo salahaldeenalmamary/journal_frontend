@@ -38,8 +38,8 @@ const AuthorFormDialog = ({ show, onHide }) => {
 
     const form = e.currentTarget;
     if (form.checkValidity()) {
-      // Handle form submission (e.g., send data to server)
-      onHide(); // Close the dialog
+     
+      onHide(); 
     } else {
       setValidated(true);
     }

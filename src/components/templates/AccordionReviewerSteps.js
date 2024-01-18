@@ -10,13 +10,19 @@ import {
   Card,
 } from "react-bootstrap";
 export default function AccordionReviewerSteps(props) {
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "15px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
   return (
     <Card>
       <Card.Body className="">
         <Accordion className="">
           <Accordion.Item eventKey="0">
             <div className="rows">
-              <Accordion.Button
+              <Accordion.Button style={headerStyle}
                 type="button"
                 className="col-12 border m-2 text-start"
               >
@@ -29,7 +35,7 @@ export default function AccordionReviewerSteps(props) {
           </Accordion.Item>
           <AccordionItem eventKey="1">
             <div className="rows">
-              <Accordion.Button
+              <Accordion.Button style={headerStyle}
                 type="button"
                 className="col-12 border m-2 text-start"
               >

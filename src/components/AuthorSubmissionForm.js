@@ -303,10 +303,15 @@ const AuthorSubmissionForm = () => {
   // const handleComplete = () => {
   //   alert("Filing created successfully");
   // };
-
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "15px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
   return (
     <Form className="container mt-3 mb-4">
-      <Stepper nonLinear className="row">
+      <Stepper nonLinear className="row" style={headerStyle}>
         {steps.map((step, index) => (
           <Step
             key={step.label}

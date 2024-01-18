@@ -3,12 +3,33 @@ import Tables from "../../common/table_with_header_and_body/table";
 
 const SearchReviewerTable = () => {
     const data = [
-
-        { reviewername: '', boardmember: "", classifacations: '', reviewerstatistacts: '' },
-
-
-    ];
-
+        {
+          reviewername: '',
+          boardmember: '',
+          classifacations: {
+            reviews_in_progress: '1',
+            completed_reviews: '1',
+            unassigned_after_agreeing: '1',
+            terminated_after_agreeing: '1',
+            last_review_agreed: '1',
+            last_review_completed: '1',
+            last_review_declined: '1',
+            avg_days_outstanding: '1',
+            manuscript_rating: '1',
+            avg_review_rating: '1',
+          },
+          reviewerstatistacts: {
+            Date_Last_Invited: '',
+            Outstanding_Invitations: '',
+            Agreed: '',
+            Declined: '',
+            Uninvited_Before_Agreeing: '',
+            Terminated: '',
+            Total_Invitations: '',
+          },
+        },
+      ];
+      
     const columns = [
         { path: "reviewername", label: "Reviewer Name" },
         { path: "boardmember", label: " Doard Member" },
@@ -50,6 +71,11 @@ const SearchReviewerTable = () => {
                 sortColumn={sortColumn}
                 onSort={handleSort}
                 data={data}
+                onSelectedAction={(s)=>
+console.log(s)
+                
+
+                }
                 // rowActions={rowActions}
                 checkboxActions={checkboxActions}
             />

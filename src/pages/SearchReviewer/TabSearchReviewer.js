@@ -8,7 +8,7 @@ const TabSearchReviewer = () => {
   
   return (
     <Card style={{ width: '100%', maxWidth: '1000px', margin: 'auto' }}>
-      <Tabs
+      <Tabs 
         id="controlled-tab-example"
         activeKey={key}
         onSelect={(k) => setKey(k)}
@@ -39,7 +39,7 @@ const TabSearchReviewer = () => {
       {key === 'yourPublications' && (
       
         <ListGroup>
-      <SearchReviewersTabOne></SearchReviewersTabOne>
+      <SearchReviewersTabOne attributes={['salah', 'saksa']}></SearchReviewersTabOne>
         </ListGroup>
       )}
       {key === 'anotherPublication' && (

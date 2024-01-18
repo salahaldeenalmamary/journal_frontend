@@ -3,9 +3,15 @@ import { Table, Button, Form,Modal,Card } from 'react-bootstrap';
 import { BsTrash, BsCheck, BsDash } from 'react-icons/bs';
 
 const ProposedReviewerTable = ({ reviewers, handleDelete, handleCheckboxChange }) => {
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "15px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
   return (
     <Table striped bordered hover responsive>
-      <thead>
+      <thead style={headerStyle}>
         <tr>
           <th>Name</th>
           <th>Proposed By</th>
@@ -123,7 +129,7 @@ const ProposedReviewer = () => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-md-8">
+        <div className="col-md-12">
           <Card>
             <Card.Header>Proposed Reviewers</Card.Header>
             <Card.Body>

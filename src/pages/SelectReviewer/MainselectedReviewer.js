@@ -4,9 +4,9 @@ import ReviewerManager from './selectedList';
 import EmailFormSend from './EmailFormSend';
 import CustomLayout from '../SearchReviewer/layout';
 import CustomSidebar from './CustomSidebar';
-import YourParentComponent from './SearchSelected';
-import SearchReviewerTable from './SelectTable';
+import { BsDownload, BsShare } from "react-icons/bs";
 
+import SearchReviewerTable from './SelectTable';
 
 
 const ReviewerManagerMain = () => {
@@ -24,7 +24,7 @@ const ReviewerManagerMain = () => {
         <br/>
   
    <ProposedReviewer></ProposedReviewer>
-  <EmailFormSend></EmailFormSend>
+
 <SearchReviewerTable></SearchReviewerTable>
 </CustomLayout>
        
@@ -34,3 +34,7 @@ const ReviewerManagerMain = () => {
 };
 
 export default ReviewerManagerMain;
+
+
+
+

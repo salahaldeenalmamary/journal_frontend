@@ -5,12 +5,18 @@ import AuthorFormStep from "./AuthorFormStep";
 import ActionButtons from "./ActionButtons";
 
 const Manuscript = (props) => {
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "1px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
   return (
     <Accordion defaultActiveKey="0">
       {/* Title */}
       <Accordion.Item className="show" as={Card.Header} eventKey="0">
         <div className="rows">
-          <Accordion.Button
+          <Accordion.Button style={headerStyle}
             type="button"
             className="col-12 border m-2 text-start"
           >
@@ -31,7 +37,7 @@ const Manuscript = (props) => {
       <Accordion.Item as={Card.Header} eventKey="1">
         <div className="rows">
           <Accordion.Button
-            type="button"
+            type="button"  style={headerStyle}
             className="col-12 border m-2 text-start"
           >
             Abstract
@@ -50,7 +56,7 @@ const Manuscript = (props) => {
       {/* Keywords */}
       <Accordion.Item as={Card.Header} eventKey="2">
         <div className="rows">
-          <Accordion.Button
+          <Accordion.Button  style={headerStyle}
             type="button"
             className="col-12 border m-2 text-start"
           >
@@ -71,7 +77,7 @@ const Manuscript = (props) => {
       <Accordion.Item as={Card.Header} eventKey="3">
         <div className="rows">
           <Accordion.Button
-            type="button"
+            type="button"  style={headerStyle}
             className="col-12 border m-2 text-start"
           >
             Authors
@@ -91,7 +97,7 @@ const Manuscript = (props) => {
       <Accordion.Item as={Card.Header} eventKey="4">
         <div className="rows">
           <Accordion.Button
-            type="button"
+            type="button"   style={headerStyle}
             className="col-12 border m-2 text-start"
           >
             Funding Information

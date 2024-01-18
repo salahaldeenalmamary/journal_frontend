@@ -25,7 +25,12 @@ const ReviewerManager = () => {
   
     setShowInviteModal(true);
   };
-
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "15px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
   const handleSendInvite = () => {
     // For demonstration purposes, just move the reviewer from Alternate to Invited
     setAlternateReviewers(alternateReviewers.filter((r) => r !== selectedReviewer));
@@ -86,11 +91,11 @@ const ReviewerManager = () => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-md-8">
+        <div className="col-md-12">
           <Card>
-            <Card.Header>Selected Reviewers</Card.Header>
+            <Card.Header >Selected Reviewers</Card.Header>
             <Card>
-              <Button variant="secondary" block>
+              <Button variant="secondary" block style={headerStyle}>
                 Invited Reviewers:
               </Button>
               <Card.Body>
@@ -123,7 +128,7 @@ const ReviewerManager = () => {
               </Card.Body>
             </Card>
             <Card>
-              <Button variant="secondary">
+              <Button variant="secondary"  style={headerStyle}>
                 Alternate Reviewers:
               </Button>
               <Card.Body>

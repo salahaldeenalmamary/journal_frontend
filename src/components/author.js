@@ -31,7 +31,8 @@ const Author = () => {
             </Link>
           </li>
           <li>
-            <Link to="/submissions" className="text-decoration-none ms-4">
+            
+            <Link to="/authorActionTable" className="text-decoration-none ms-4">
               Incomplete Submissions
               <span className="mx-2">(0)</span>
             </Link>

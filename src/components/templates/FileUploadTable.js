@@ -13,7 +13,12 @@ const Items = [
 const FileUploadTable = (props) => {
   const [files, setFiles] = useState([]);
   const [selectedFiles, setSelectedFiles] = useState([]);
-
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "15px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
   const handleFileUpload = (event) => {
     const lastFile = event.target.files["0"];
     for (const file of files) {
@@ -87,7 +92,7 @@ const FileUploadTable = (props) => {
             {files.length > 0 && (
               <Col xs={12} md={12}>
                 <Table striped bordered hover>
-                  <thead>
+                  <thead style={headerStyle}>
                     <tr>
                       <th>Select</th>
                       <th>Order</th>

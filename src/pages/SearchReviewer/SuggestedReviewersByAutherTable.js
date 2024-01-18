@@ -7,7 +7,12 @@ const SuggestedReviewersByAutherTable = () => {
     { id: 2, name: 'ahmed', email: 'a@example.com' },
     
   ]);
-
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "15px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
   const handleRegisterReview = (reviewerId) => {
    
     console.log(`Review registered  ${reviewerId}`);
@@ -15,7 +20,7 @@ const SuggestedReviewersByAutherTable = () => {
 
   return (
     <Table striped bordered hover>
-      <thead>
+      <thead style={headerStyle}>
         <tr>
           <th></th>
           <th>Name</th>

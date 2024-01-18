@@ -1,5 +1,11 @@
 import React from "react";
 const TableHeader = ({ columns, sortColumn: localsortcolumn, onSort ,rowActions }) => {
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "15px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
   const raiseSort = (path) => {
     const sortColumn = { ...localsortcolumn };
     if (path === undefined) return null;
@@ -23,8 +29,9 @@ const TableHeader = ({ columns, sortColumn: localsortcolumn, onSort ,rowActions 
     }
     return <i className="fa fa-sort-desc"></i>;
   };
+  
   return (
-    <thead>
+    <thead style={headerStyle}>
       <tr>
       {rowActions && <th className="text-center">Actions</th>}
         {columns.map((column) => (

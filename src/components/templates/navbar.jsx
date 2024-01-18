@@ -5,8 +5,14 @@ import AuthorSubmissionForm from "../AuthorSubmissionForm";
 import Admin from "../Admin";
 
 const NavigationBar = () => {
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "15px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
   return (
-    <Navbar className="bg-dark p-3 mb-3" expand="lg">
+    <Navbar  style={headerStyle} expand="lg">
       <div className="container-fluid">
         <Navbar.Brand>
           <img
@@ -26,7 +32,7 @@ const NavigationBar = () => {
             <Nav.Link className="text-white">About</Nav.Link>
             <Nav.Link className="text-white">Contact</Nav.Link>
             <Nav.Link className="text-white"  href="/reviewerManagerMain">search</Nav.Link>
-            <Nav.Link className="text-white"  href="/mainSubmainDetails">mainSubmainDetails</Nav.Link>
+         
             <Nav.Link className="text-white"  href="/searchReviewerMain">searchReviewerMain</Nav.Link>
             <Nav.Link className="text-white" href="/AuthorSubmissionForm">
               
@@ -38,6 +44,9 @@ const NavigationBar = () => {
             </Nav.Link>
             <Nav.Link className="text-white" href="/Admin">
               Admin
+            </Nav.Link>
+            <Nav.Link className="text-white" href="/reviews">
+              review
             </Nav.Link>
           </Nav>
           <Button href="/login" className="btn btn-dark btn-outline-light mx-3">

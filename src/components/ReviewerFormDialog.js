@@ -25,6 +25,12 @@ const ReviewerFormDialog = (props) => {
       [name]: value,
     }));
   };
+  const headerStyle = {
+    backgroundColor: "#255384", // Customize the color as needed
+    color: "#fff", // Text color
+    padding: "15px", // Add padding for better appearance
+    marginBottom: "2px", // Add margin for separation
+  };
 
   const handleSubmit = () => {
     if (reviewer.firstName && reviewer.lastName && reviewer.email) {
@@ -169,7 +175,7 @@ const ReviewerFormDialog = (props) => {
           </Modal>
 
           <Table striped bordered hover responsive>
-            <thead>
+            <thead style={headerStyle}>
               <tr>
                 <th>Given/First Name</th>
                 <th>Middle Name</th>
