@@ -119,6 +119,7 @@ const SubmmisonTable = () => {
     },
     {
       label: "Assign Editor",
+      to:(i)=>'/assignEditorTable',
       onClick: (item) => {
         // Handle action
         console.log("Assign Editor clicked for item:", item);

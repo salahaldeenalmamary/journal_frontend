@@ -73,20 +73,13 @@ const ManuscriptForm = () => {
               <Form.Group controlId="overallRating">
                 <InputGroup>
                   <Form.Control
-                    type="text"
+                   
+                    type="number"
                     placeholder="Enter rating"
                     value={overallRating}
                     onChange={handleOverallRatingChange}
                   />
-                  <Button variant="outline-secondary" onClick={handleIncrement}>
-                    <BsArrowBarUp></BsArrowBarUp>  <i className="bi bi-caret-up-fill" style={{
-                      backgroundColor: "#255384",
-                      color: "#fff",
-                    }}></i>
-                  </Button>
-                  <Button variant="outline-secondary" onClick={handleDecrement}>
-                    <BsArrowBarDown>  <i className="bi bi-caret-down-fill"></i></BsArrowBarDown>  
-                  </Button>
+                  
                 </InputGroup>
               </Form.Group>
             </Col>

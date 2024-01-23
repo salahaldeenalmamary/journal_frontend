@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import AssignEditorTable from "./assigneEditor";
 const Reviews = () => {
   return (
     <div className="row justify-content-center justify-content-md-start">
@@ -39,7 +39,7 @@ const Reviews = () => {
         </li>
         </ul>
        
-        
+      
       </div>
       <div className="col-md-4"></div>
     </div>

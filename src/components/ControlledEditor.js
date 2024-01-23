@@ -1,35 +1,71 @@
-import React, { Component } from "react";
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from "draft-js";
-import { Card } from "react-bootstrap";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import draftToHtml from "draftjs-to-html";
+import React, { useState } from 'react';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Button } from 'react-bootstrap';
 
-export default class ControlledEditor extends Component {
-  state = {
-    editorState: EditorState.createEmpty(),
+const ControlledEditor = () => {
+  const [htmlContent, setHtmlContent] = useState('');
+
+  const handleEditorChange = (event, editor) => {
+    const newHtmlContent = editor.getData();
+    setHtmlContent(newHtmlContent);
   };
 
-  onEditorStateChange = (editorState) => {
-    this.setState({
-      editorState,
-    });
+  const handleDownload = () => {
+  
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'editor_content.html';
+
+
+    document.body.appendChild(link);
+    link.click();
+
+    // Remove the link from the document
+    document.body.removeChild(link);
   };
 
-  render() {
-    const { editorState } = this.state;
-    return (
-      <div>
-        <Card>
-          <Editor
-            editorState={editorState}
-            toolbarClassName="toolbarClassName"
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
-            onEditorStateChange={this.onEditorStateChange}
-          />
-        </Card>
-      </div>
-    );
-  }
-}
+  const handleFilePickerChange = (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const fileContent = reader.result;
+        setHtmlContent(fileContent);
+      };
+
+      reader.readAsText(file);
+    }
+  };
+
+  return (
+    <div className="App">
+      <Button onClick={handleDownload}>Download</Button>
+
+   
+      <input type="file" onChange={handleFilePickerChange} accept=".html" />
+
+      <CKEditor
+        editor={ClassicEditor}
+        //disabled
+        onReady={(editor) => {
+          console.log('CKEditor React Component is ready to use!', editor);
+        }}
+
+        config={{
+          simpleUpload: {
+            uploadUrl: 'your_upload_endpoint',
+          },
+        }}
+        data={htmlContent}  // Set the CKEditor content
+        onChange={handleEditorChange}
+      />
+    </div>
+  );
+};
+
+export default ControlledEditor;

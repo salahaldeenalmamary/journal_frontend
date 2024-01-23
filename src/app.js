@@ -21,6 +21,8 @@ import UnavailableDate from "./pages/Reviewer/UnavailableDate";
 import Reviewerinvatiations from "./pages/Reviewer/Reviewerinvatiations";
 import PaddingAssignmentsReViewer from "./pages/Reviewer/PaddingAssignments";
 import ReviewPromptAgree from "./pages/Reviewer/ReviewPromptAgree";
+import AssignEditorTable from "./pages/Reviewer/assigneEditor";
+import MainAdmin from "./pages/admin/Mian";
 
 function App() {
   return (
@@ -41,6 +43,9 @@ function App() {
         <Route path="/recommendationReviewer" element={<RecommendationReviewer />} />
         <Route path="/reviewerAssgientment" element={<ReviewerAssgientment />} />
         <Route path="/unavailableDate" element={<UnavailableDate />} />
+        <Route path="/assignEditorTable" element={<AssignEditorTable />} />
+        <Route path="/mainAdmin" element={<MainAdmin />} />
+
        
         <Route path="/reviewPromptAgree" element={<ReviewPromptAgree />} />
 

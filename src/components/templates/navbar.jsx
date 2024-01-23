@@ -42,7 +42,7 @@ const NavigationBar = () => {
             <Nav.Link className="text-white" href="/mainSubmmsionEditor">
             mainSubmmsionEditor
             </Nav.Link>
-            <Nav.Link className="text-white" href="/Admin">
+            <Nav.Link className="text-white" href="/mainAdmin">
               Admin
             </Nav.Link>
             <Nav.Link className="text-white" href="/reviews">
