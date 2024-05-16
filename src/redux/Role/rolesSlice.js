@@ -72,8 +72,6 @@ const rolesSlice = createSlice({
       })
       .addCase(assignRoleToUser.fulfilled, (state, action) => {
         // Handle successful role assignment 
-
-        
       })
       .addCase(getCurrentUserWithRoles.fulfilled, (state, action) => {
         state.currentUserWithRoles = action.payload;

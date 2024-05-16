@@ -1,20 +1,41 @@
 import React from "react";
-
-
-import { Provider } from 'react-redux';
-
 import ReactDOM from "react-dom/client";
-import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.bundle";
+import { ConfigProvider } from "antd";
 import App from "./app";
-import store from "./redux/store";
-
+import store from "./store/configureStore";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+import { blue, red, geekblue, gray } from "@ant-design/colors";
+import { MessageProvider } from "./common/Notification";
 // ...
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
-  <App />
-</Provider>,
+  <React.StrictMode>
+    <Provider store={store}>
+    <MessageProvider>
+      <ConfigProvider
+        theme={{
+          components: {
+            Descriptions: {
+              extraColor: "blue",
+              padding: 20,
+            },
+            Menu: {
+              darkItemColor: blue[0],
+              darkItemBg: blue[8],
+              darkSubMenuItemBg: blue[6],
+              darkItemSelectedColor: blue[8],
+              darkItemSelectedBg: blue[0],
+              darkDangerItemActiveBg: blue[0],
+            },
+          },
+        }}
+      >
+        <App />
+      </ConfigProvider>
+      </MessageProvider>
+    </Provider>
+  </React.StrictMode>
 );
 // const rootElement = ReactDOM.createRoot(document.createRo("root"));
 // rootElement.render(<App />);

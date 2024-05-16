@@ -1,84 +1,134 @@
-import React, { useState } from "react";
-import {
-  Form,
-  FormControl,
-  Button,
-  Row,
-  Col,
-  Card,
-  Dropdown,
-} from "react-bootstrap";
-import { BsSearch } from "react-icons/bs";
+import React,{useEffect,useState } from 'react';
+import { Form, Input, Button, Select, Col, Row ,Dropdown,Menu} from 'antd';
+import { BsSearch } from 'react-icons/bs';
+import { OrderedListOutlined} from '@ant-design/icons';
+const { Option } = Select;
 
-function SearchBar({ searchTerms, onConfirmSearch }) {
-  const [searchQuery, setSearchQuery] = useState(searchTerms.searchQuery);
-  const [searchBy, setSearchBy] = useState(searchTerms.searchBy);
-  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
-
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
+const SearchBar = ({ searchTerms, onSearchTermsChange, onSearch, onSortChange, children, sortBy }) => {
+  const handleInputChange = (value) => {
+    onSearchTermsChange({ ...searchTerms, searchQuery: value });
   };
 
-  const handleSearchByChange = (value) => {
-    setSearchBy(value);
+  const handleSearchByChange = (e) => {
+    const { value } = e.item.props; 
+    onSearchTermsChange({ ...searchTerms, searchBy: value });
+  };
+  const handleSearchByChange2 = (value) => {
+    
+    onSearchTermsChange({ ...searchTerms, searchBy: value });
+  };
+  
+  const handleSortChange = (value) => {
+    onSortChange(value);
   };
 
-  const handleSearch = () => {
-    onConfirmSearch({ searchQuery, searchBy });
-  };
+                const getMenu = () => (
+                  <Menu value={searchTerms.searchBy}>
+                  {['title', 'subtitle', 'Author', 'Abstract', 'region'].map((option) => (
+                    <Menu.Item key={option} value={option} onClick={handleSearchByChange}>
+                      {option.charAt(0).toUpperCase() + option.slice(1)} "{searchTerms.searchQuery}"
+                    </Menu.Item>
+                  ))}
+                </Menu>
+                
+                );
 
-  const toggleAdvancedSearch = () => {
-    setShowAdvancedSearch((prev) => !prev);
-  };
+                
+  const [isMobile, setIsMobile] = useState(false);
 
-  return (
-    <Card body className="shadow-sm mb-3">
-      <Form>
-        <Row className="align-items-center">
-          <Col xs={6} md={8}>
-            <FormControl
-              type="text"
-              placeholder="Search"
-              className="mr-sm-2"
-              value={searchQuery}
-              onChange={handleInputChange}
-            />
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Assuming 768px as mobile breakpoint
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize); // Listen to window resize event
+
+    return () => {
+      window.removeEventListener('resize', handleResize); 
+    };
+  }, []); 
+  return ( 
+    <div className="container mt-4">
+         {!isMobile ?( <Form.Item className="custom-search-bar">
+        <Row gutter={[16, 16]}>
+          <Col xs={24} sm={12} md={8} lg={6} xl={5}>
+            {children}
           </Col>
-          <Col xs={4} md={2}>
-            <Button variant="outline-success" block onClick={handleSearch}>
-              <BsSearch /> Search
+          <Col xs={24} sm={12} md={8} lg={6} xl={5}>
+            <Select
+              placeholder="Search by"
+              value={searchTerms.searchBy}
+              onChange={handleSearchByChange2}
+              style={{ width: '100%' }}
+            >
+                {['title', 'subtitle', 'Author', 'Abstract', 'region'].map((option) => (
+                  <Option key={option} value={option}>
+                    {option.charAt(0).toUpperCase() + option.slice(1)}
+                  </Option>))}
+            </Select>
+          </Col>
+        
+          <Col xs={24} sm={12} md={8} lg={6} xl={5}>
+          <Dropdown overlay={getMenu() } >
+          <Input 
+              prefix={<BsSearch style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder={`Enter ${searchTerms.searchBy} search`}
+              allowClear
+              value={searchTerms.searchQuery}
+              onChange={(e) => handleInputChange(e.target.value)}
+              style={{ width: '100%' }}
+            />
+              </Dropdown>
+           
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} xl={5}>
+            <Select
+              placeholder="Sort by"
+              value={sortBy}
+              onChange={handleSortChange}
+              style={{ width: '100%' }}
+            >
+              <Option value="relevance">Relevance</Option>
+              <Option value="newest">Newest</Option>
+              <Option value="oldest">Oldest</Option>
+            </Select>
+          </Col>
+          <Col xs={24} sm={12} md={8} lg={6} xl={4}>
+            <Button
+              type="primary"
+              className="ms-2 custom-search-button"
+              htmlType="submit"
+              onClick={onSearch}
+              style={{ width: '100%' }}
+            >
+              Search
             </Button>
           </Col>
         </Row>
-        {showAdvancedSearch && (
-          <div>
-            <Col xs={2} md={2}>
-              <Dropdown>
-                <Dropdown.Toggle variant="outline-secondary" block>
-                  Search By:{" "}
-                  {searchBy.charAt(0).toUpperCase() + searchBy.slice(1)}
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  {["title", "author", "description"].map((option) => (
-                    <Dropdown.Item
-                      key={option}
-                      onClick={() => handleSearchByChange(option)}
-                    >
-                      {option.charAt(0).toUpperCase() + option.slice(1)}
-                    </Dropdown.Item>
-                  ))}
-                </Dropdown.Menu>
-              </Dropdown>
-            </Col>
-          </div>
-        )}
+      </Form.Item>):<>  <Dropdown overlay={getMenu() } >
+          <Input 
+              prefix={<BsSearch style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder={`Enter ${searchTerms.searchBy} search`}
+              allowClear
+              value={searchTerms.searchQuery}
+              onChange={(e) => handleInputChange(e.target.value)}
+              style={{ width: '80%' }}
+            />
 
-        <Button variant="link" onClick={toggleAdvancedSearch}>
-          {showAdvancedSearch ? "Hide Advanced Search" : "Show Advanced Search"}
-        </Button>
-      </Form>
-    </Card>
+              </Dropdown> {children}   <Select
+              placeholder="Sort by"
+              value={sortBy}
+              onChange={handleSortChange}
+              style={{ width: '30%' }}
+            >
+              <Option value="relevance">Relevance</Option>
+              <Option value="newest">Newest</Option>
+              <Option value="oldest">Oldest</Option>
+            </Select></>}
+     
+    </div>
   );
-}
+};
 
 export default SearchBar;

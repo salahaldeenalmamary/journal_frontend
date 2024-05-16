@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "manuscript_number": 10,
+    "author": "Abdul-qader",
+    "type": "article",
+    "title": "React",
+    "status": "Accepted"
+  },
+  {
+    "id": 2,
+    "manuscript_number": 13,
+    "author": "Jaber",
+    "type": "article",
+    "title": "ASP.net",
+    "status": "Review"
+  },
+  {
+    "id": 3,
+    "manuscript_number": 15,
+    "author": "Mummin",
+    "type": "article",
+    "title": "EF",
+    "status": "Accepted"
+  },
+  {
+    "id": 4,
+    "manuscript_number": 9,
+    "author": "Salah",
+    "type": "article",
+    "title": "Unknown",
+    "status": "Declined"
+  }
+]
